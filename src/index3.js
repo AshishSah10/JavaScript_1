@@ -105,3 +105,22 @@ console.log(add(2, 3));
 console.log(add(2)(3));
 
 // implement add(x,y,z...) and add(x)(y)(z).... generalize add method for any number of arguments
+function generalizeAdd(item){
+    var sum = 0;
+    if(arguments.length > 1){
+        for(key in arguments){
+            // console.log(arguments[key])
+            sum += arguments[key];
+        }
+        return sum;
+    }
+    else{
+        return function(){
+            sum += item;
+            return sum;
+        }
+    }
+}
+
+console.log(generalizeAdd(2,3,4));
+console.log(generalizeAdd(2)(3)(4));
